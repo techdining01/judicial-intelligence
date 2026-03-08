@@ -1,0 +1,1 @@
+MAX_ALERTS_PER_DAY = 5

@@ -1,0 +1,7 @@
+
+from .base import SmallClaimsRule
+
+class AnambraSmallClaimsRule(SmallClaimsRule):
+    state = "Anambra"
+    max_amount = 5_000_000
+    max_duration_days = 60

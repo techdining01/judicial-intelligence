@@ -1,40 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import BarChart from "../../components/Charts/BarChart";
-import Card from "../../components/Card";
-import { fetchCourtAnalytics } from "../../lib/api";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { getUserFromToken } from "@/lib/auth";
 
-const DashboardPage = () => {
-  const [analytics, setAnalytics] = useState<any>(null);
+export default function DashboardPage() {
+  const router = useRouter();
 
   useEffect(() => {
-    fetchCourtAnalytics().then((data) => setAnalytics(data));
-  }, []);
-
-  if (!analytics) return <p>Loading...</p>;
-
-  const courtNames = analytics.map((c: any) => c.court_name);
-  const totalCases = analytics.map((c: any) => c.total_cases);
+    const user = getUserFromToken();
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+    switch (user.role) {
+      case "ADMIN":
+        router.push("/dashboard/admin");
+        break;
+      case "LAWYER":
+        router.push("/dashboard/lawyer");
+        break;
+      case "STUDENT_LAWYER":
+        router.push("/dashboard/student");
+        break;
+      case "RESEARCHER":
+        router.push("/dashboard/researcher");
+        break;
+      default:
+        router.push("/dashboard/admin");
+    }
+  }, [router]);
 
   return (
-    <div className="p-6 space-y-6">
-      {/* KPI Cards */}
-      <div className="flex flex-wrap gap-4">
-        <Card title="Total Courts" value={analytics.length} />
-        <Card
-          title="Total Cases"
-          value={analytics.reduce((sum: number, c: any) => sum + c.total_cases, 0)}
-        />
-      </div>
-
-      {/* Bar Chart */}
-      <div className="bg-white p-4 shadow rounded-md">
-        <h2 className="font-bold mb-4">Cases Per Court</h2>
-        <BarChart labels={courtNames} data={totalCases} title="Total Cases" />
-      </div>
+    <div className="flex items-center justify-center min-h-[40vh]">
+      <p className="text-slate-500">Redirecting...</p>
     </div>
   );
-};
-
-export default DashboardPage;
+}

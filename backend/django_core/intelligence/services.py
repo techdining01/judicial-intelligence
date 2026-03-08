@@ -1,10 +1,10 @@
 import requests
 from .models import CaseEmbedding, PrecedentResult
-from courts.models import Case
+from courts.models import CourtCase
 
 FASTAPI_AI_URL = "http://fastapi:8001/ai/precedents"
 
-def run_precedent_search(case: Case):
+def run_precedent_search(case: CourtCase):
     source_embedding = CaseEmbedding.objects.get(case=case)
 
     all_embeddings = {

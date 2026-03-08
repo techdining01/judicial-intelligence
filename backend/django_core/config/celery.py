@@ -1,5 +1,3 @@
-from celery.schedules import crontab
-from celery import Celery
 
 
 # app.conf.beat_schedule = {

@@ -6,9 +6,9 @@ interface CardProps {
 }
 
 const Card = ({ title, value }: CardProps) => (
-  <div className="p-4 bg-white shadow rounded-md w-full sm:w-1/3">
-    <h3 className="text-gray-500 text-sm">{title}</h3>
-    <p className="text-2xl font-bold">{value}</p>
+  <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm w-full">
+    <h3 className="text-slate-500 text-sm font-medium">{title}</h3>
+    <p className="mt-1 text-2xl font-bold text-slate-800">{value}</p>
   </div>
 );
 

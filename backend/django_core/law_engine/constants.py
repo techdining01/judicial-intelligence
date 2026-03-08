@@ -1,0 +1,3 @@
+
+KWARA_SMALL_CLAIMS_LIMIT = 3_000_000  # ₦3M as per Kwara guidelines
+SMALL_CLAIMS_DEFAULT_LIMIT = 5_000_000  # ₦5M fallback
