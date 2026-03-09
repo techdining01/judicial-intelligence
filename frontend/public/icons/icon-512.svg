@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#0f172a"/>
+
+  <!-- Scales of Justice -->
+  <!-- Central beam -->
+  <rect x="234.667" y="186.667" width="42.667" height="138.667" rx="5.333" fill="#f59e0b"/>
+
+  <!-- Left scale pan -->
+  <ellipse cx="181.333" cy="293.333" rx="42.667" ry="32" fill="#64748b"/>
+  <rect x="160" y="261.333" width="42.667" height="10.667" rx="5.333" fill="#475569"/>
+  <ellipse cx="181.333" cy="281.333" rx="32" ry="21.333" fill="#f1f5f9"/>
+  <text x="181.333" y="300" text-anchor="middle" fill="#0f172a" font-family="Arial, sans-serif" font-size="21.333" font-weight="bold">L</text>
+
+  <!-- Right scale pan -->
+  <ellipse cx="330.667" cy="293.333" rx="42.667" ry="32" fill="#64748b"/>
+  <rect x="309.333" y="261.333" width="42.667" height="10.667" rx="5.333" fill="#475569"/>
+  <ellipse cx="330.667" cy="281.333" rx="32" ry="21.333" fill="#f1f5f9"/>
+  <text x="330.667" y="300" text-anchor="middle" fill="#0f172a" font-family="Arial, sans-serif" font-size="21.333" font-weight="bold">R</text>
+
+  <!-- Balance point -->
+  <circle cx="256" cy="186.667" r="10.667" fill="#f59e0b"/>
+  <circle cx="256" cy="186.667" r="5.333" fill="#0f172a"/>
+
+  <!-- Support base -->
+  <rect x="224" y="320" width="64" height="16" rx="8" fill="#475569"/>
+  <rect x="245.333" y="336" width="21.333" height="53.333" rx="10.667" fill="#64748b"/>
+
+  <!-- App name -->
+  <text x="256" y="453.333" text-anchor="middle" fill="#f1f5f9" font-family="Arial, sans-serif" font-size="32" font-weight="bold">NJI</text>
+</svg>

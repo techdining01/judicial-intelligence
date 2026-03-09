@@ -5,7 +5,7 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("id", "email", "full_name", "role")
+        fields = ("id", "email", "full_name", "role", "avatar_url")
 
 
 
@@ -15,4 +15,5 @@ class CustomTokenSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token["role"] = user.role
         token["email"] = user.email
+        token["avatar_url"] = user.avatar_url
         return token

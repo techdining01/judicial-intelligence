@@ -13,7 +13,12 @@ from .auth.jwt import get_current_user
 
 # Scraping routers (single router with both routes)
 from .scraping.routers import router as scrape_router
-from .rules.routes import router as rules_router
+from .routes.rules import router as rules_router
+from .routes.training import router as training_router
+from .routes.moot_court import router as moot_court_router
+from .routes.notifications import router as notifications_router
+from .routes.legal_research import router as legal_research_router
+from .routes.legal_practice import router as legal_practice_router
 
 app = FastAPI(
     title="Judicial Intelligence API",
@@ -36,6 +41,11 @@ app.include_router(ai_router, prefix="/ai", tags=["ai"])
 app.include_router(law_ai_router, prefix="/law", tags=["law"])
 app.include_router(scrape_router, prefix="/scrape", tags=["scraping"])
 app.include_router(rules_router, prefix="/rules", tags=["rules"])
+app.include_router(training_router, prefix="/training", tags=["training"])
+app.include_router(moot_court_router, prefix="/moot-court", tags=["moot-court"])
+app.include_router(notifications_router, prefix="/notifications", tags=["notifications"])
+app.include_router(legal_research_router, prefix="/legal-research", tags=["legal-research"])
+app.include_router(legal_practice_router, prefix="/legal-practice", tags=["legal-practice"])
 
 
 @app.get("/health")

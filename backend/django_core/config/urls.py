@@ -26,5 +26,6 @@ urlpatterns = [
     path("api/auth/", include("users.urls")),
     path("api/courts/", include("courts.urls")),
     path("api/alerts/", include("alerts.urls")),
+    path("api/intelligence/", include("intelligence.urls")),
 ]
 

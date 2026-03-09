@@ -4,7 +4,7 @@ Small claims and jurisdiction rules — all 36 states + FCT, Nigeria.
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from fastapi_services.rules_engine.resolver import (
+from rules_engine.resolver import (
     validate_small_claim,
     resolve_rules,
     RULES,

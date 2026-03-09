@@ -14,6 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=255)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    avatar_url = models.URLField(blank=True, null=True, help_text="Profile picture URL")
     telegram_chat_id = models.CharField(
         max_length=50, blank=True, null=True
     )

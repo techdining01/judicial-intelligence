@@ -10,7 +10,7 @@ from .anambra import AnambraSmallClaimsRule
 from .ogun import OgunSmallClaimsRule
 from .ekiti import EkitiSmallClaimsRule
 from .kaduna import KadunaSmallClaimsRule
-from .fct import FctSmallClaimsRule
+from .fct import FCTSmallClaimsRule
 from .abia import AbiaSmallClaimsRule
 from .adamawa import AdamawaSmallClaimsRule
 from .akwa_ibom import AkwaIbomSmallClaimsRule
@@ -56,7 +56,7 @@ MAPPING = {
     "ogun": OgunSmallClaimsRule(),
     "ekiti": EkitiSmallClaimsRule(),
     "kaduna": KadunaSmallClaimsRule(),
-    "fct": FctSmallClaimsRule(),
+    "fct": FCTSmallClaimsRule(),
     "abia": AbiaSmallClaimsRule(),
     "adamawa": AdamawaSmallClaimsRule(),
     "akwa_ibom": AkwaIbomSmallClaimsRule(),

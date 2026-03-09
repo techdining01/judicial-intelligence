@@ -1,7 +1,7 @@
 from jose import jwt, JWTError
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi_services.config import SECRET_KEY, ALGORITHM
+from config import SECRET_KEY, ALGORITHM
 
 security = HTTPBearer()
 

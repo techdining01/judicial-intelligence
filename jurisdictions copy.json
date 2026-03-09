@@ -1,0 +1,23 @@
+{
+    "lagos": {"name": "Lagos", "limit": "5,000,000", "timeline": "60 Days", "rules": "Pre-Action Protocol mandatory."},
+    "abuja": {"name": "Abuja (FCT)", "limit": "5,000,000", "timeline": "12 Months", "rules": "2025 E-Filing Rules apply."},
+    "kwara": {"name": "Kwara", "limit": "3,000,000", "timeline": "60 Days", "rules": "Gateway ADR focus."},
+    "kano": {"name": "Kano", "limit": "5,000,000", "timeline": "60 Days", "rules": "Northern Trade rules."},
+    "oyo": {"name": "Oyo", "limit": "5,000,000", "timeline": "60 Days", "rules": "Pace Setter protocols."},
+    "enugu": {"name": "Enugu", "limit": "5,000,000", "timeline": "30 Days", "rules": "High-automation e-portal."},
+    "abia": {"name": "Abia", "limit": "5,000,000", "timeline": "60 Days", "rules": "Fast-track registry."},
+    "osun": {"name": "Osun", "limit": "5,000,000", "timeline": "60 Days", "rules": "Multi-door courthouse first."},
+    "ogun": {"name": "Ogun", "limit": "500,000", "timeline": "60 Days", "rules": "Customary Court of Appeal focus."},
+    "ekiti": {"name": "Ekiti", "limit": "5,000,000", "timeline": "30 Days", "rules": "Practice Direction 2020/25."},
+    "ondo": {"name": "Ondo", "limit": "5,000,000", "timeline": "60 Days", "rules": "Sunshine State legal codes."},
+    "river": {"name": "Rivers", "limit": "5,000,000", "timeline": "60 Days", "rules": "Admiralty/Energy focus."},
+    "anambra": {"name": "Anambra", "limit": "5,000,000", "timeline": "60 Days", "rules": "Land recovery focus."},
+    "kaduna": {"name": "Kaduna", "limit": "5,000,000", "timeline": "60 Days", "rules": "Mediation-first logic."},
+    "edo": {"name": "Edo", "limit": "5,000,000", "timeline": "60 Days", "rules": "Magisterial District rules."},
+
+    
+
+
+    
+}
+ 
