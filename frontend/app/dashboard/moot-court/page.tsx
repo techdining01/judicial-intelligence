@@ -31,7 +31,7 @@ export default function MootCourtPage() {
       </div>
 
       {/* Features */}
-      <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
+      <div className="border border-slate-200 rounded-lg p-6">
         <h3 className="font-semibold text-slate-900 mb-4">Moot Court Features</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-700">
           <div>

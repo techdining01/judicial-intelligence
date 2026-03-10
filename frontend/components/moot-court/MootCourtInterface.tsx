@@ -223,7 +223,7 @@ export default function MootCourtInterface() {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6">
+    <div className="rounded-xl border border-slate-200 p-6">
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Moot Court Simulation</h2>
       
       {!currentSession ? (
@@ -256,7 +256,7 @@ export default function MootCourtInterface() {
             <select
               value={caseType}
               onChange={(e) => setCaseType(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 bg-white"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
               style={{ 
                 WebkitFontSmoothing: 'antialiased',
                 MozOsxFontSmoothing: 'grayscale',
@@ -422,7 +422,7 @@ export default function MootCourtInterface() {
                 <select
                   value={argumentType}
                   onChange={(e) => setArgumentType(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 bg-white"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                   style={{ 
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
