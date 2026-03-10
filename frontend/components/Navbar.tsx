@@ -41,7 +41,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2 rounded-md hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-2 rounded-md hover:bg-slate-800 transition-colors"
           >
             <Menu className="h-5 w-5 text-slate-600" />
           </button>

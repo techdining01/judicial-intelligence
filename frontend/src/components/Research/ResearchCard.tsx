@@ -47,23 +47,23 @@ export default function ResearchCard({ article, onBookmark, onRead, onDownload }
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Constitutional Law': 'bg-purple-100 text-purple-800',
-      'Contract Law': 'bg-blue-100 text-blue-800',
-      'Criminal Law': 'bg-red-100 text-red-800',
-      'Family Law': 'bg-green-100 text-green-800',
-      'Commercial Law': 'bg-yellow-100 text-yellow-800',
-      'Property Law': 'bg-indigo-100 text-indigo-800',
-      'Tort Law': 'bg-pink-100 text-pink-800',
-      'Evidence': 'bg-orange-100 text-orange-800',
-      'Civil Procedure': 'bg-teal-100 text-teal-800',
-      'Legal Ethics': 'bg-gray-100 text-gray-800'
+      'Constitutional Law': 'border border-purple-200 text-purple-800',
+      'Contract Law': 'border border-blue-200 text-blue-800',
+      'Criminal Law': 'border border-red-200 text-red-800',
+      'Family Law': 'border border-green-200 text-green-800',
+      'Commercial Law': 'border border-yellow-200 text-yellow-800',
+      'Property Law': 'border border-indigo-200 text-indigo-800',
+      'Tort Law': 'border border-pink-200 text-pink-800',
+      'Evidence': 'border border-orange-200 text-orange-800',
+      'Civil Procedure': 'border border-teal-200 text-teal-800',
+      'Legal Ethics': 'border border-gray-200 text-gray-800'
     };
     return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800';
   };
 
   return (
     <div 
-      className="bg-white border border-slate-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer"
+      className="border border-slate-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer"
       onClick={handleRead}
     >
       {/* Header */}
@@ -89,7 +89,7 @@ export default function ResearchCard({ article, onBookmark, onRead, onDownload }
         </div>
         <button
           onClick={handleBookmark}
-          className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          className="p-2 rounded-lg border border-slate-200 transition-colors"
         >
           {isBookmarked ? (
             <BookmarkCheck className="h-5 w-5 text-blue-600 fill-current" />

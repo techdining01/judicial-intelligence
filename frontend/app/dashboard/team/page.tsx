@@ -62,11 +62,11 @@ export default function TeamPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active':
-        return 'bg-green-100 text-green-800';
+        return 'border border-green-200 text-green-800';
       case 'inactive':
-        return 'bg-red-100 text-red-800';
+        return 'border border-red-200 text-red-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'border border-slate-200 text-slate-800';
     }
   };
 
@@ -182,7 +182,7 @@ export default function TeamPage() {
         </div>
 
         {/* Departments */}
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="font-semibold text-slate-900 mb-4">Department Overview</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="border border-slate-200 rounded-lg p-4">
@@ -190,7 +190,7 @@ export default function TeamPage() {
               <p className="text-sm text-slate-600 mb-3">Research and analysis of constitutional matters</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-500">1 member</span>
-                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Active</span>
+                <span className="text-xs px-2 py-1 border border-blue-200 text-blue-800 rounded-full">Active</span>
               </div>
             </div>
             <div className="border border-slate-200 rounded-lg p-4">
@@ -198,7 +198,7 @@ export default function TeamPage() {
               <p className="text-sm text-slate-600 mb-3">Contract drafting and dispute resolution</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-500">1 member</span>
-                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Active</span>
+                <span className="text-xs px-2 py-1 border border-blue-200 text-blue-800 rounded-full">Active</span>
               </div>
             </div>
             <div className="border border-slate-200 rounded-lg p-4">
@@ -206,7 +206,7 @@ export default function TeamPage() {
               <p className="text-sm text-slate-600 mb-3">Criminal case analysis and legal support</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-500">1 member</span>
-                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Active</span>
+                <span className="text-xs px-2 py-1 border border-blue-200 text-blue-800 rounded-full">Active</span>
               </div>
             </div>
           </div>

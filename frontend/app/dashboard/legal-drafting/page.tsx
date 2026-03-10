@@ -95,7 +95,7 @@ export default function LegalDraftingPage() {
                   key={type.id}
                   onClick={() => handleGenerateDocument(type.id)}
                   disabled={isGenerating && selectedDocument === type.id}
-                  className="w-full text-left p-4 border border-slate-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-left p-4 border border-slate-200 rounded-lg hover:border-blue-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
@@ -128,7 +128,7 @@ export default function LegalDraftingPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => navigator.clipboard.writeText(documentContent)}
-                    className="px-3 py-1 text-sm border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                    className="px-3 py-1 text-sm border border-slate-300 rounded-lg transition-colors"
                     style={{
                       WebkitFontSmoothing: 'antialiased',
                       MozOsxFontSmoothing: 'grayscale',
@@ -189,10 +189,10 @@ export default function LegalDraftingPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+                  <span className="px-2 py-1 border border-blue-200 text-blue-800 rounded-full">
                     {doc.type}
                   </span>
-                  <button className="px-3 py-1 text-sm border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                  <button className="px-3 py-1 text-sm border border-slate-300 rounded-lg transition-colors">
                     View
                   </button>
                 </div>

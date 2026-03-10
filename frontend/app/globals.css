@@ -45,6 +45,19 @@ body {
   color: #94a3b8 !important;
 }
 
+/* Fix white hover backgrounds in dark mode */
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+}
+
+.dark .hover\:bg-slate-100:hover {
+  background-color: #334155 !important;
+}
+
+.dark .hover\:bg-white:hover {
+  background-color: #1e293b !important;
+}
+
 /* Form input fixes for dark mode */
 .dark input[type="email"],
 .dark input[type="password"],

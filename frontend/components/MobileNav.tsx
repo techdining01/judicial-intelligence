@@ -24,7 +24,7 @@ export default function MobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 px-2 py-2">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 px-2 py-2">
       <div className="flex justify-around items-center max-w-md mx-auto">
         {navigation.map((item) => {
           const isActive = pathname === item.href;
@@ -36,8 +36,8 @@ export default function MobileNav() {
                 flex flex-col items-center justify-center p-2 rounded-lg min-w-0 flex-1
                 transition-colors duration-200
                 ${isActive
-                  ? 'text-sky-600 bg-sky-50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'text-sky-600 border border-sky-200'
+                  : 'text-slate-600 hover:text-slate-900'
                 }
               `}
             >
