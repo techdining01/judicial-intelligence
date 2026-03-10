@@ -32,7 +32,6 @@ const nav = [
   
   // User Management
   { href: "/dashboard/profile", label: "Profile", icon: User },
-  { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
 interface SidebarProps {
