@@ -89,35 +89,35 @@ export default function DashboardHomePage() {
   const getColorClasses = (color: string) => {
     const colorMap = {
       blue: {
-        bg: "bg-blue-50",
+        bg: "",
         border: "border-blue-200",
         icon: "text-blue-600",
         button: "bg-blue-600 hover:bg-blue-700",
         badge: "bg-blue-100 text-blue-800"
       },
       purple: {
-        bg: "bg-purple-50",
+        bg: "",
         border: "border-purple-200",
         icon: "text-purple-600",
         button: "bg-purple-600 hover:bg-purple-700",
         badge: "bg-purple-100 text-purple-800"
       },
       green: {
-        bg: "bg-green-50",
+        bg: "",
         border: "border-green-200",
         icon: "text-green-600",
         button: "bg-green-600 hover:bg-green-700",
         badge: "bg-green-100 text-green-800"
       },
       orange: {
-        bg: "bg-orange-50",
+        bg: "",
         border: "border-orange-200",
         icon: "text-orange-600",
         button: "bg-orange-600 hover:bg-orange-700",
         badge: "bg-orange-100 text-orange-800"
       },
       red: {
-        bg: "bg-red-50",
+        bg: "",
         border: "border-red-200",
         icon: "text-red-600",
         button: "bg-red-600 hover:bg-red-700",
@@ -149,7 +149,7 @@ export default function DashboardHomePage() {
               {/* Card Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 ${colors.bg} rounded-lg`}>
+                  <div className={`p-2 rounded-lg border ${colors.border}`}>
                     <Icon className={`h-6 w-6 ${colors.icon}`} />
                   </div>
                   <div>
