@@ -13,6 +13,7 @@ const nav = [
   { href: "/dashboard/judgments", label: "Judgments", icon: "⚖️" },
   { href: "/dashboard/legal-research", label: "Legal Research", icon: "🔍" },
   { href: "/dashboard/legal-practice", label: "Legal Practice", icon: "⚖️" },
+  { href: "/dashboard/ai-courtroom", label: "AI Courtroom", icon: "🎥" },
   { href: "/dashboard/moot-court", label: "Moot Court", icon: "🎭" },
   { href: "/dashboard/learning", label: "Learning", icon: "📚" },
   { href: "/dashboard/research-library", label: "Research", icon: "🔬" },
