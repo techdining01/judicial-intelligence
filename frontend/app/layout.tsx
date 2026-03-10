@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import ThemeProvider from "@/src/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Judicial Intelligence Platform",
@@ -33,7 +34,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="NJI" />
       </head>
       <body className="min-h-screen text-slate-900">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `
