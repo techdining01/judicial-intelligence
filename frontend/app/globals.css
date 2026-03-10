@@ -50,6 +50,19 @@ body {
   color: #f1f5f9 !important;
 }
 
+/* Specific fix for Profile Settings heading */
+.dark h1.text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark h2.text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark h3.text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
 .dark .text-slate-800 {
   color: #f1f5f9 !important;
 }
