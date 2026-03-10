@@ -45,6 +45,26 @@ body {
   color: #94a3b8 !important;
 }
 
+/* Form input fixes for dark mode */
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="text"] {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark input[type="email"]:focus,
+.dark input[type="password"]:focus,
+.dark input[type="text"]:focus {
+  border-color: #0ea5e9 !important;
+  background-color: #1e293b !important;
+}
+
+.dark input::placeholder {
+  color: #94a3b8 !important;
+}
+
 /* Comprehensive text color fixes for dark mode */
 .dark .text-slate-900 {
   color: #f1f5f9 !important;
