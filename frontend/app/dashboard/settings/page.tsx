@@ -71,6 +71,11 @@ export default function SettingsPage() {
                     value={profileData.fullName}
                     onChange={(e) => setProfileData(prev => ({ ...prev, fullName: e.target.value }))}
                     className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility'
+                    }}
                   />
                 </div>
                 <div>
@@ -80,6 +85,11 @@ export default function SettingsPage() {
                     value={profileData.email}
                     onChange={(e) => setProfileData(prev => ({ ...prev, email: e.target.value }))}
                     className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility'
+                    }}
                   />
                 </div>
                 <div>
@@ -89,6 +99,11 @@ export default function SettingsPage() {
                     value={profileData.phone}
                     onChange={(e) => setProfileData(prev => ({ ...prev, phone: e.target.value }))}
                     className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility'
+                    }}
                   />
                 </div>
                 <div>
@@ -97,6 +112,11 @@ export default function SettingsPage() {
                     value={profileData.role}
                     onChange={(e) => setProfileData(prev => ({ ...prev, role: e.target.value }))}
                     className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility'
+                    }}
                   >
                     <option value="Student Lawyer">Student Lawyer</option>
                     <option value="Lawyer">Lawyer</option>
@@ -112,6 +132,11 @@ export default function SettingsPage() {
                     className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows={4}
                     placeholder="Tell us about yourself..."
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility'
+                    }}
                   />
                 </div>
               </div>
@@ -222,7 +247,12 @@ export default function SettingsPage() {
               </div>
               <div className="border border-slate-200 rounded-lg p-4">
                 <h4 className="font-medium text-slate-900 mb-2">Font Size</h4>
-                <select className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'optimizeLegibility'
+                  }}>
                   <option>Small</option>
                   <option>Medium</option>
                   <option>Large</option>
@@ -241,7 +271,12 @@ export default function SettingsPage() {
             <div className="space-y-6">
               <div className="border border-slate-200 rounded-lg p-4">
                 <h4 className="font-medium text-slate-900 mb-2">Display Language</h4>
-                <select className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'optimizeLegibility'
+                  }}>
                   <option>English</option>
                   <option>Spanish</option>
                   <option>French</option>
