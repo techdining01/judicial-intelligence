@@ -324,7 +324,7 @@ export default function ResearchLibraryPage() {
         {filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredArticles.map((article) => (
-                  <div key={article.id} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div key={article.id} className="rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow">
                     <ResearchCard 
                       article={article} 
                       onBookmark={handleBookmark}

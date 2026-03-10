@@ -182,7 +182,7 @@ export default function NotificationsPage() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Bell className="h-5 w-5 text-blue-600" />
@@ -194,7 +194,7 @@ export default function NotificationsPage() {
             </div>
           </div>
           
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                 <Bell className="h-5 w-5 text-red-600" />
@@ -206,7 +206,7 @@ export default function NotificationsPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Check className="h-5 w-5 text-green-600" />
@@ -220,7 +220,7 @@ export default function NotificationsPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                 <Archive className="h-5 w-5 text-orange-600" />
@@ -234,7 +234,7 @@ export default function NotificationsPage() {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white border border-slate-200 rounded-lg p-4">
+        <div className="border border-slate-200 rounded-lg p-4">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">

@@ -15,7 +15,7 @@ export default function LegalPracticePage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-1 shadow-sm">
         <nav className="flex space-x-1">
           <button
             onClick={() => setActiveTab('small-claims')}
@@ -90,7 +90,7 @@ export default function LegalPracticePage() {
         )}
 
         {activeTab === 'document-drafting' && (
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
+          <div className="border border-slate-200 rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4">Legal Document Drafting</h2>
             <div className="text-center py-12">
               <p className="text-slate-500">Document drafting coming soon...</p>
@@ -100,7 +100,7 @@ export default function LegalPracticePage() {
         )}
 
         {activeTab === 'evidence' && (
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
+          <div className="border border-slate-200 rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4">Evidence Organizer</h2>
             <div className="text-center py-12">
               <p className="text-slate-500">Evidence organizer coming soon...</p>
@@ -110,7 +110,7 @@ export default function LegalPracticePage() {
         )}
 
         {activeTab === 'timeline' && (
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
+          <div className="border border-slate-200 rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4">Case Timeline Builder</h2>
             <div className="text-center py-12">
               <p className="text-slate-500">Timeline builder coming soon...</p>
@@ -122,21 +122,21 @@ export default function LegalPracticePage() {
 
       {/* Features Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">⚖️ Guided Workflows</h3>
           <p className="text-slate-600 text-sm">
             Step-by-step assistance for common legal procedures
           </p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">📝 Document Generation</h3>
           <p className="text-slate-600 text-sm">
             AI-powered drafting of legal documents and forms
           </p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">📁 Case Management</h3>
           <p className="text-slate-600 text-sm">
             Organize evidence, documents, and timelines

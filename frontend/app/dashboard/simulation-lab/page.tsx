@@ -72,7 +72,7 @@ export default function SimulationLabPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white border border-slate-200 rounded-lg p-4">
+        <div className="border border-slate-200 rounded-lg p-4">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">

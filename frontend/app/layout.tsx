@@ -32,7 +32,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="NJI" />
       </head>
-      <body className="min-h-screen bg-slate-50 text-slate-900">
+      <body className="min-h-screen text-slate-900">
         {children}
         <script
           dangerouslySetInnerHTML={{

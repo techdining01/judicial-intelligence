@@ -166,7 +166,7 @@ export default function ProfilePage() {
   const renderProfileTab = () => (
     <div className="space-y-6">
       {/* Profile Picture Section */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Profile Picture</h3>
         <div className="flex items-center gap-6 mb-6">
           <div className="relative">
@@ -248,7 +248,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Personal Information */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Personal Information</h3>
         <form onSubmit={handleProfileUpdate} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -418,7 +418,7 @@ export default function ProfilePage() {
 
   const renderNotificationsTab = () => (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Notification Preferences</h3>
         <div className="space-y-4">
           {Object.entries({
@@ -467,7 +467,7 @@ export default function ProfilePage() {
 
   const renderAppearanceTab = () => (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Appearance Settings</h3>
         <div className="space-y-6">
           {/* Theme Selection */}
@@ -564,7 +564,7 @@ export default function ProfilePage() {
 
   const renderLanguageTab = () => (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Language Settings</h3>
         <div className="space-y-4">
           <div>
@@ -602,7 +602,7 @@ export default function ProfilePage() {
 
   const renderPrivacyTab = () => (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Data & Privacy Settings</h3>
         <div className="space-y-6">
           {/* Data Export */}
@@ -668,7 +668,7 @@ export default function ProfilePage() {
 
   const renderHelpTab = () => (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Help & Support</h3>
         <div className="space-y-6">
           {/* Quick Help */}

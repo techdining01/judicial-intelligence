@@ -133,7 +133,7 @@ export default function CaseAnalysisPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Input Section */}
         <div className="lg:col-span-2">
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">Describe Your Dispute</h2>
             <div className="space-y-4">
               <div>
@@ -143,9 +143,9 @@ export default function CaseAnalysisPage() {
                 <textarea
                   value={disputeDescription}
                   onChange={(e) => setDisputeDescription(e.target.value)}
+                  className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                   placeholder="Provide a detailed description of your legal dispute, including relevant facts, dates, parties involved, and what outcome you're seeking..."
                   rows={6}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                   style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
@@ -160,7 +160,7 @@ export default function CaseAnalysisPage() {
                     Jurisdiction
                   </label>
                   <select 
-                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                     style={{
                       WebkitFontSmoothing: 'antialiased',
                       MozOsxFontSmoothing: 'grayscale',
@@ -178,7 +178,7 @@ export default function CaseAnalysisPage() {
                     Dispute Type
                   </label>
                   <select 
-                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                     style={{
                       WebkitFontSmoothing: 'antialiased',
                       MozOsxFontSmoothing: 'grayscale',
@@ -222,7 +222,7 @@ export default function CaseAnalysisPage() {
 
         {/* Saved Cases */}
         <div className="lg:col-span-1">
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">Saved Cases</h2>
             <div className="space-y-3">
               {savedCases.map((case_) => (
@@ -273,28 +273,28 @@ export default function CaseAnalysisPage() {
         <div className="space-y-6">
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-4 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <Scale className="h-5 w-5 text-blue-600" />
                 <span className="text-sm font-medium text-slate-700">Success Probability</span>
               </div>
               <div className="text-2xl font-bold text-blue-600">{analysis.successProbability}%</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-4 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <AlertCircle className="h-5 w-5 text-red-600" />
                 <span className="text-sm font-medium text-slate-700">Legal Issues</span>
               </div>
               <div className="text-2xl font-bold text-red-600">{analysis.legalIssues.length}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-4 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle className="h-5 w-5 text-green-600" />
                 <span className="text-sm font-medium text-slate-700">Defenses</span>
               </div>
               <div className="text-2xl font-bold text-green-600">{analysis.possibleDefenses.length}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-4 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="h-5 w-5 text-purple-600" />
                 <span className="text-sm font-medium text-slate-700">Timeline</span>
@@ -304,7 +304,7 @@ export default function CaseAnalysisPage() {
           </div>
 
           {/* Legal Issues */}
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900 mb-4">Identified Legal Issues</h3>
             <div className="space-y-4">
               {analysis.legalIssues.map((issue: any, index: number) => (
@@ -344,7 +344,7 @@ export default function CaseAnalysisPage() {
           </div>
 
           {/* Recommendations */}
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900 mb-4">Recommended Actions</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {analysis.recommendedActions.map((action: any, index: number) => (
@@ -357,7 +357,7 @@ export default function CaseAnalysisPage() {
           </div>
 
           {/* Similar Cases */}
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900 mb-4">Similar Cases</h3>
             <div className="space-y-3">
               {analysis.similarCases.map((case_: any, index: number) => (

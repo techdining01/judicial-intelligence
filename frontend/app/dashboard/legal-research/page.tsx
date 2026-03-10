@@ -15,7 +15,7 @@ export default function LegalResearchPage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-1 shadow-sm">
         <nav className="flex space-x-1">
           <button
             onClick={() => setActiveTab('statutes')}
@@ -75,7 +75,7 @@ export default function LegalResearchPage() {
         )}
 
         {activeTab === 'precedents' && (
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
+          <div className="border border-slate-200 rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4">Precedent Mapping</h2>
             <div className="text-center py-12">
               <p className="text-slate-500">Precedent mapping coming soon...</p>
@@ -85,7 +85,7 @@ export default function LegalResearchPage() {
         )}
 
         {activeTab === 'analysis' && (
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
+          <div className="border border-slate-200 rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4">Document Analysis</h2>
             <div className="text-center py-12">
               <p className="text-slate-500">Document analysis coming soon...</p>
@@ -97,21 +97,21 @@ export default function LegalResearchPage() {
 
       {/* Features Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">📚 Comprehensive Database</h3>
           <p className="text-slate-600 text-sm">
             Access federal and state statutes, regulations, and court decisions
           </p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">🔍 Smart Search</h3>
           <p className="text-slate-600 text-sm">
             AI-powered search with semantic understanding and relevance ranking
           </p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
+        <div className="border border-slate-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">🔗 Cross-Referencing</h3>
           <p className="text-slate-600 text-sm">
             Automatic precedent detection and citation analysis

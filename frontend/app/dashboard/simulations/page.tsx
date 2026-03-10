@@ -166,7 +166,7 @@ export default function SimulationsPage() {
 
         {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Play className="h-5 w-5 text-blue-600" />
@@ -178,7 +178,7 @@ export default function SimulationsPage() {
             </div>
           </div>
           
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Users className="h-5 w-5 text-green-600" />
@@ -192,7 +192,7 @@ export default function SimulationsPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                 <Clock className="h-5 w-5 text-purple-600" />
@@ -204,7 +204,7 @@ export default function SimulationsPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+          <div className="border border-slate-200 rounded-lg p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                 <Award className="h-5 w-5 text-orange-600" />
@@ -222,7 +222,7 @@ export default function SimulationsPage() {
           {simulations.map((simulation) => (
             <div
               key={simulation.id}
-              className={`bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all`}
+              className={`border border-slate-200 rounded-xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all`}
             >
               <div className="p-6">
                 {/* Header */}

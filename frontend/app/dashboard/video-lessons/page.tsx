@@ -63,7 +63,7 @@ export default function VideoLessonsPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white border border-slate-200 rounded-lg p-4">
+        <div className="border border-slate-200 rounded-lg p-4">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
@@ -117,7 +117,7 @@ export default function VideoLessonsPage() {
                 {filteredLessons.map((lesson) => (
                   <div
                     key={lesson.id}
-                    className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer"
+                    className="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer"
                     onClick={() => handleLessonSelect(lesson)}
                   >
                     <div className="relative aspect-video bg-slate-200">
@@ -127,7 +127,7 @@ export default function VideoLessonsPage() {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-slate-100/90 rounded-full flex items-center justify-center">
                           <Play className="h-8 w-8 text-slate-900 ml-1" />
                         </div>
                       </div>

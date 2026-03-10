@@ -429,7 +429,7 @@ export default function SettingsPage() {
 
           {/* Content */}
           <div className="flex-1">
-            <div className="bg-white border border-slate-200 rounded-xl p-6">
+            <div className="border border-slate-200 rounded-xl p-6">
               {renderTabContent()}
             </div>
           </div>

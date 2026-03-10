@@ -85,12 +85,12 @@ export default function ScrapingTestPage() {
       </div>
 
       {/* Controls */}
-      <div className="bg-white p-6 rounded-xl border border-slate-200">
+      <div className="p-6 rounded-xl border border-slate-200">
         <div className="flex flex-wrap gap-4 items-center">
           <select
             value={selectedCourt}
             onChange={(e) => setSelectedCourt(e.target.value)}
-            className="px-3 py-2 border border-slate-300 rounded-md"
+            className="px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
           >
             <option value="all">All Courts</option>
             {courts.map(court => (
@@ -134,7 +134,7 @@ export default function ScrapingTestPage() {
       {/* Results */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Judgments */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200">
+        <div className="p-6 rounded-xl border border-slate-200">
           <h3 className="text-lg font-semibold text-slate-800 mb-4">
             Judgments ({judgments.length})
           </h3>
@@ -153,7 +153,7 @@ export default function ScrapingTestPage() {
         </div>
 
         {/* Cause List */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200">
+        <div className="p-6 rounded-xl border border-slate-200">
           <h3 className="text-lg font-semibold text-slate-800 mb-4">
             Cause List ({causeList.length})
           </h3>
