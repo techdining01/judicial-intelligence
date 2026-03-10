@@ -240,8 +240,8 @@ export default function SettingsPage() {
                     onClick={() => setAppearance(prev => ({ ...prev, theme: 'light' }))}
                     className={`p-4 border-2 rounded-lg text-center transition-colors ${
                       appearance.theme === 'light' 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 hover:border-slate-300'
+                        ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700'
                     }`}
                   >
                     <div className="w-8 h-8 bg-white border border-slate-300 rounded mx-auto mb-2"></div>
@@ -251,8 +251,8 @@ export default function SettingsPage() {
                     onClick={() => setAppearance(prev => ({ ...prev, theme: 'dark' }))}
                     className={`p-4 border-2 rounded-lg text-center transition-colors ${
                       appearance.theme === 'dark' 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 hover:border-slate-300'
+                        ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700'
                     }`}
                   >
                     <div className="w-8 h-8 bg-slate-900 rounded mx-auto mb-2"></div>
@@ -262,8 +262,8 @@ export default function SettingsPage() {
                     onClick={() => setAppearance(prev => ({ ...prev, theme: 'auto' }))}
                     className={`p-4 border-2 rounded-lg text-center transition-colors ${
                       appearance.theme === 'auto' 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 hover:border-slate-300'
+                        ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700'
                     }`}
                   >
                     <div className="w-8 h-8 bg-gradient-to-br from-white to-slate-900 rounded mx-auto mb-2"></div>
