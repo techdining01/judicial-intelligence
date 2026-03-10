@@ -2,34 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, Scale } from "lucide-react";
+import { 
+  X, Scale, Home, Search, FileText, Gavel, FolderOpen, 
+  Users, Video, BookOpen, Bell, BarChart3, User, Settings
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { getUserFromToken } from "@/lib/auth";
 
 const nav = [
   // Main Navigation
-  { href: "/dashboard/home", label: "Legal Intel", icon: "🏠" },
+  { href: "/dashboard/home", label: "Legal Intel", icon: Home },
   
   // AI Legal Research
-  { href: "/dashboard/research", label: "Legal Research", icon: "�" },
+  { href: "/dashboard/research", label: "Legal Research", icon: Search },
   
   // AI Legal Practice Tools
-  { href: "/dashboard/legal-drafting", label: "Legal Drafting", icon: "�" },
-  { href: "/dashboard/case-analysis", label: "Case Analysis", icon: "⚖️" },
-  { href: "/dashboard/evidence", label: "Evidence Organizer", icon: "�" },
+  { href: "/dashboard/legal-drafting", label: "Legal Drafting", icon: FileText },
+  { href: "/dashboard/case-analysis", label: "Case Analysis", icon: Gavel },
+  { href: "/dashboard/evidence", label: "Evidence Organizer", icon: FolderOpen },
   
   // AI Law Training System
-  { href: "/dashboard/moot-court", label: "AI Moot Court", icon: "�" },
-  { href: "/dashboard/ai-courtroom", label: "AI Courtroom", icon: "�" },
-  { href: "/dashboard/legal-modules", label: "Legal Modules", icon: "📚" },
+  { href: "/dashboard/moot-court", label: "AI Moot Court", icon: Users },
+  { href: "/dashboard/ai-courtroom", label: "AI Courtroom", icon: Video },
+  { href: "/dashboard/legal-modules", label: "Legal Modules", icon: BookOpen },
   
   // Platform Features
-  { href: "/dashboard/alerts", label: "Alerts", icon: "�" },
-  { href: "/dashboard/analytics", label: "Analytics", icon: "📊" },
+  { href: "/dashboard/alerts", label: "Alerts", icon: Bell },
+  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
   
   // User Management
-  { href: "/dashboard/profile", label: "Profile", icon: "�" },
-  { href: "/dashboard/settings", label: "Settings", icon: "⚙️" },
+  { href: "/dashboard/profile", label: "Profile", icon: User },
+  { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
 interface SidebarProps {
@@ -91,7 +94,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                     : "text-slate-300 hover:bg-slate-800 hover:text-white"
                 }`}
               >
-                <span className="text-base">{item.icon}</span>
+                <item.icon className="h-5 w-5" />
                 {item.label}
               </Link>
             );
