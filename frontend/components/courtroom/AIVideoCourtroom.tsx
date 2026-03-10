@@ -192,7 +192,7 @@ export default function AIVideoCourtroom() {
       speaker: 'You',
       timestamp: new Date().toLocaleTimeString(),
       text: currentArgument,
-      type: 'statement'
+      type: 'statement' as const
     };
 
     // Add to transcript
@@ -224,7 +224,7 @@ export default function AIVideoCourtroom() {
         speaker: selectedSession.participants.find(p => p.role === 'ai_opponent')?.name || 'AI Assistant',
         timestamp: new Date().toLocaleTimeString(),
         text: aiResponse,
-        type: 'statement'
+        type: 'statement' as const
       };
 
       setSessions(prev => prev.map(session => {
