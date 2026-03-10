@@ -7,20 +7,29 @@ import { useState, useEffect } from "react";
 import { getUserFromToken } from "@/lib/auth";
 
 const nav = [
-  { href: "/dashboard", label: "Dashboard", icon: "🏠" },
+  // Main Navigation
+  { href: "/dashboard/home", label: "Legal Intel", icon: "🏠" },
+  
+  // AI Legal Research
+  { href: "/dashboard/research", label: "Legal Research", icon: "�" },
+  
+  // AI Legal Practice Tools
+  { href: "/dashboard/legal-drafting", label: "Legal Drafting", icon: "�" },
+  { href: "/dashboard/case-analysis", label: "Case Analysis", icon: "⚖️" },
+  { href: "/dashboard/evidence", label: "Evidence Organizer", icon: "�" },
+  
+  // AI Law Training System
+  { href: "/dashboard/moot-court", label: "AI Moot Court", icon: "�" },
+  { href: "/dashboard/ai-courtroom", label: "AI Courtroom", icon: "�" },
+  { href: "/dashboard/legal-modules", label: "Legal Modules", icon: "📚" },
+  
+  // Platform Features
+  { href: "/dashboard/alerts", label: "Alerts", icon: "�" },
   { href: "/dashboard/analytics", label: "Analytics", icon: "📊" },
-  { href: "/dashboard/alerts", label: "Alerts", icon: "🔔" },
-  { href: "/dashboard/judgments", label: "Judgments", icon: "⚖️" },
-  { href: "/dashboard/legal-research", label: "Legal Research", icon: "🔍" },
-  { href: "/dashboard/legal-practice", label: "Legal Practice", icon: "⚖️" },
-  { href: "/dashboard/ai-courtroom", label: "AI Courtroom", icon: "🎥" },
-  { href: "/dashboard/moot-court", label: "Moot Court", icon: "🎭" },
-  { href: "/dashboard/learning", label: "Learning", icon: "📚" },
-  { href: "/dashboard/research-library", label: "Research", icon: "🔬" },
-  { href: "/dashboard/simulations", label: "Simulations", icon: "🎯" },
-  { href: "/dashboard/team", label: "Team", icon: "👥" },
+  
+  // User Management
+  { href: "/dashboard/profile", label: "Profile", icon: "�" },
   { href: "/dashboard/settings", label: "Settings", icon: "⚙️" },
-  { href: "/dashboard/profile", label: "Profile", icon: "👤" },
 ];
 
 interface SidebarProps {
@@ -45,14 +54,14 @@ export default function Sidebar({ onClose }: SidebarProps) {
   return (
     <aside className="min-h-screen bg-slate-900 text-white flex flex-col border-r border-slate-700/50">
       <div className="p-5 border-b border-slate-700/50 flex items-center justify-between">
-        <Link href="/dashboard" className="flex items-center gap-3" onClick={onClose}>
+        <Link href="/dashboard/home" className="flex items-center gap-3" onClick={onClose}>
           <Scale className="h-8 w-8 text-white" />
           <div>
             <span className="text-lg font-semibold tracking-tight text-white">
-              Judicial Intel
+              Legal Intel
             </span>
             <span className="block text-xs text-slate-400 mt-0.5">
-              Nigerian Legal Platform
+              Unified Legal Intelligence
             </span>
           </div>
         </Link>
@@ -116,7 +125,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           </div>
         </NoSSR>
         <p className="text-xs text-slate-500 px-3">
-          © {new Date().getFullYear()} Judicial Intelligence
+          © {new Date().getFullYear()} Legal Intel
         </p>
       </div>
     </aside>
