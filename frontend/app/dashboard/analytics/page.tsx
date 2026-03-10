@@ -61,18 +61,18 @@ export default function CourtAnalyticsPage() {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white p-5 shadow-sm rounded-xl border border-slate-100">
+        <div className="p-5 shadow-sm rounded-xl border border-slate-100">
           <h3 className="font-semibold text-slate-800 mb-3">Cases per court</h3>
           <BarChart labels={courtNames} data={totalCases} title="Cases" />
         </div>
-        <div className="bg-white p-5 shadow-sm rounded-xl border border-slate-100">
+        <div className="p-5 shadow-sm rounded-xl border border-slate-100">
           <h3 className="font-semibold text-slate-800 mb-3">Case status</h3>
           <PieChart
             labels={Object.keys(statusTotals)}
             data={Object.values(statusTotals)}
           />
         </div>
-        <div className="bg-white p-5 shadow-sm rounded-xl border border-slate-100 md:col-span-2">
+        <div className="p-5 shadow-sm rounded-xl border border-slate-100 md:col-span-2">
           <h3 className="font-semibold text-slate-800 mb-3">Trend over time</h3>
           {trendLabels.length ? (
             <LineChart labels={trendLabels} data={trendData} />

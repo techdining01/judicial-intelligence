@@ -752,7 +752,7 @@ export default function ProfilePage() {
         )}
 
         {/* Tabs Navigation */}
-        <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+        <div className="border border-slate-200 rounded-lg shadow-sm">
           <div className="border-b border-slate-200">
             <nav className="flex space-x-8 px-6" aria-label="Tabs">
               {tabs.map((tab) => {

@@ -103,7 +103,7 @@ export default function EvidencePage() {
         <div className="lg:col-span-1">
           <div className="space-y-6">
             {/* Upload Section */}
-            <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Upload Evidence</h3>
               <div className="space-y-4">
                 <label className="block">
@@ -124,7 +124,7 @@ export default function EvidencePage() {
             </div>
 
             {/* Categories */}
-            <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+            <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Categories</h3>
               <div className="space-y-2">
                 {categories.map((category) => (
@@ -155,7 +155,7 @@ export default function EvidencePage() {
 
         {/* Main Content */}
         <div className="lg:col-span-3">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+          <div className="border border-slate-200 rounded-lg shadow-sm">
             {/* Search Bar */}
             <div className="p-6 border-b border-slate-200">
               <div className="flex items-center gap-4">
@@ -244,7 +244,7 @@ export default function EvidencePage() {
 
           {/* Selected File Details */}
           {selectedFile && (
-            <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm mt-6">
+            <div className="border border-slate-200 rounded-lg p-6 shadow-sm mt-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">File Details</h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">

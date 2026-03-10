@@ -244,7 +244,7 @@ export default function LegalModulesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Modules List */}
         <div className="lg:col-span-2">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+          <div className="border border-slate-200 rounded-lg shadow-sm">
             <div className="p-6 border-b border-slate-200">
               <h2 className="text-lg font-semibold text-slate-900">Available Modules</h2>
             </div>
@@ -325,7 +325,7 @@ export default function LegalModulesPage() {
         {/* Module Details */}
         <div className="lg:col-span-1">
           {selectedModule ? (
-            <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+            <div className="border border-slate-200 rounded-lg shadow-sm">
               <div className="p-6 border-b border-slate-200">
                 <h3 className="text-lg font-semibold text-slate-900">{selectedModule.title}</h3>
                 <p className="text-sm text-slate-600 mt-1">{selectedModule.description}</p>

@@ -176,7 +176,7 @@ export default function LegalDraftingPage() {
 
       {/* Generated Documents History */}
       {generatedDocuments.length > 0 && (
-        <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+        <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">Recent Documents</h2>
           <div className="space-y-3">
             {generatedDocuments.map((doc) => (
