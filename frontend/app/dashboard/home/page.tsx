@@ -191,7 +191,7 @@ export default function DashboardHomePage() {
       </div>
 
       {/* Quick Stats Overview */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-xl p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-900 mb-4">Platform Overview</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">

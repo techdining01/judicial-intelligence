@@ -87,7 +87,7 @@ export default function LegalDraftingPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Document Types */}
         <div className="lg:col-span-1">
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">Document Types</h2>
             <div className="space-y-3">
               {documentTypes.map((type) => (
@@ -121,7 +121,7 @@ export default function LegalDraftingPage() {
 
         {/* Document Content */}
         <div className="lg:col-span-2">
-          <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+          <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-slate-900">Generated Document</h2>
               {documentContent && (

@@ -8,7 +8,7 @@ export default function ResearcherPage() {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 p-6">
+      <div className="rounded-lg border border-slate-200 p-6">
         <p className="text-slate-500">Research tools coming soon...</p>
       </div>
     </div>

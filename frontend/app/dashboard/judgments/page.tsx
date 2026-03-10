@@ -93,7 +93,7 @@ export default function JudgmentsPage() {
       </div>
       
       {/* Search Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-4">
+      <div className="border border-slate-200 rounded-lg p-4">
         <div className="relative">
           <input
             type="text"
@@ -146,7 +146,7 @@ export default function JudgmentsPage() {
         <>
           <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
             {paginatedJudgments.map((judgment) => (
-              <div key={judgment.id} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+              <div key={judgment.id} className="rounded-xl border border-slate-200 p-6 shadow-sm">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-lg font-semibold text-slate-800 truncate">
                     {judgment.case_title}

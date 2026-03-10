@@ -207,7 +207,7 @@ export default function LegalModulesPage() {
       </div>
 
       {/* Progress Overview */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+      <div className="border border-slate-200 rounded-lg p-6 shadow-sm">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">Your Learning Progress</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="text-center">

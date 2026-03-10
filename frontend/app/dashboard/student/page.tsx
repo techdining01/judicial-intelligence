@@ -8,7 +8,7 @@ export default function StudentPage() {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 p-6">
+      <div className="rounded-lg border border-slate-200 p-6">
         <p className="text-slate-500">Student resources coming soon...</p>
       </div>
     </div>

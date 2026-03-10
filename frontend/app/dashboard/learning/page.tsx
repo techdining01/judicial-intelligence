@@ -44,7 +44,7 @@ export default function LearningDashboardPage() {
             <AIRecommendations />
             
             {/* Quick Actions */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+            <div className="rounded-xl border border-slate-200 p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <button 
