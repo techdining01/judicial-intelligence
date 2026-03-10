@@ -178,8 +178,8 @@ export default function SettingsPage() {
                       onChange={(e) => setNotifications(prev => ({ ...prev, [key]: e.target.checked }))}
                       className="sr-only"
                     />
-                    <div className={`w-11 h-6 bg-slate-200 rounded-full border-2 border-slate-300 transition-colors ${
-                      value ? 'bg-blue-600 border-blue-600' : 'bg-white border-slate-300'
+                    <div className={`w-11 h-6 rounded-full transition-colors ${
+                      value ? 'bg-blue-600' : 'bg-slate-200'
                     }`}>
                       <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform ${
                         value ? 'translate-x-6' : 'translate-x-0'
