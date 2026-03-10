@@ -45,7 +45,12 @@ body {
   color: #94a3b8 !important;
 }
 
+/* Comprehensive text color fixes for dark mode */
 .dark .text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-800 {
   color: #f1f5f9 !important;
 }
 
@@ -57,12 +62,117 @@ body {
   color: #cbd5e1 !important;
 }
 
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+.dark .text-slate-300 {
+  color: #475569 !important;
+}
+
+/* Additional color fixes for dark theme */
+.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-gray-800 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Font weight specific fixes */
+.dark .font-bold {
+  color: inherit !important;
+}
+
+.dark .font-semibold {
+  color: inherit !important;
+}
+
+.dark .font-medium {
+  color: inherit !important;
+}
+
+/* Border color fixes */
 .dark .border-slate-200 {
   border-color: #334155 !important;
 }
 
 .dark .border-slate-300 {
   border-color: #475569 !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+/* Background color fixes for interactive elements */
+.dark .bg-slate-50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #334155 !important;
+}
+
+.dark .bg-slate-200 {
+  background-color: #475569 !important;
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+}
+
+.dark .hover\:bg-slate-200:hover {
+  background-color: #475569 !important;
+}
+
+/* Blue color fixes for dark mode */
+.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+.dark .text-blue-700 {
+  color: #3b82f6 !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: #1e40af !important;
+}
+
+.dark .border-blue-200 {
+  border-color: #1e40af !important;
+}
+
+.dark .text-blue-100 {
+  color: #dbeafe !important;
 }
 
 @media (prefers-color-scheme: dark) {

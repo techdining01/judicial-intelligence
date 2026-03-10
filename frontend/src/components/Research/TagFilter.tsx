@@ -6,7 +6,7 @@
 'use client';
 
 import { X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface TagFilterProps {
   availableTags: string[];
@@ -17,10 +17,17 @@ interface TagFilterProps {
 
 export default function TagFilter({ availableTags, selectedTags, onTagToggle, onClearAll }: TagFilterProps) {
   const [showAll, setShowAll] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  
+  // Prevent hydration mismatch by only rendering dynamic content after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
   const displayTags = showAll ? availableTags : availableTags.slice(0, 8);
 
   const getTagCount = (tag: string) => {
-    // Mock tag counts - in real app, this would come from API
+    // Deterministic tag counts - no random values to avoid hydration mismatch
     const counts: Record<string, number> = {
       'constitutional': 45,
       'contracts': 38,
@@ -38,11 +45,11 @@ export default function TagFilter({ availableTags, selectedTags, onTagToggle, on
       'tax': 6,
       'environmental': 5
     };
-    return counts[tag] || Math.floor(Math.random() * 20) + 1;
+    return counts[tag] || 5; // Default to 5 instead of random
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4">
+    <div className="border border-slate-200 rounded-lg p-4">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-medium text-slate-900">Filter by Tags</h3>
         {selectedTags.length > 0 && (
@@ -83,7 +90,7 @@ export default function TagFilter({ availableTags, selectedTags, onTagToggle, on
       <div className="space-y-2">
         <p className="text-sm text-slate-600">Available tags:</p>
         <div className="flex flex-wrap gap-2">
-          {displayTags.map((tag) => {
+          {isMounted ? displayTags.map((tag) => {
             const isSelected = selectedTags.includes(tag);
             const count = getTagCount(tag);
             
@@ -103,11 +110,21 @@ export default function TagFilter({ availableTags, selectedTags, onTagToggle, on
                 </span>
               </button>
             );
-          })}
+          }) : availableTags.slice(0, 8).map((tag) => (
+            <button
+              key={tag}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-700"
+            >
+              {tag}
+              <span className="text-xs text-slate-500">
+                (Loading...)
+              </span>
+            </button>
+          ))}
         </div>
         
         {/* Show More/Less Button */}
-        {availableTags.length > 8 && (
+        {isMounted && availableTags.length > 8 && (
           <button
             onClick={() => setShowAll(!showAll)}
             className="text-sm text-blue-600 hover:text-blue-700 font-medium mt-2"
