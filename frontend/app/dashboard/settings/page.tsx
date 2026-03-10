@@ -26,6 +26,11 @@ export default function SettingsPage() {
     bio: ''
   });
 
+  const [appearance, setAppearance] = useState({
+    theme: 'light',
+    fontSize: 'medium'
+  });
+
   const handleSaveProfile = () => {
     console.log('Saving profile:', profileData);
   };
@@ -39,7 +44,7 @@ export default function SettingsPage() {
   };
 
   const handleSaveAppearance = () => {
-    console.log('Saving appearance settings');
+    console.log('Saving appearance settings:', appearance);
   };
 
   const handleSaveLanguage = () => {
@@ -231,34 +236,65 @@ export default function SettingsPage() {
               <div className="border border-slate-200 rounded-lg p-4">
                 <h4 className="font-medium text-slate-900 mb-2">Theme</h4>
                 <div className="grid grid-cols-3 gap-4">
-                  <button className="p-4 border-2 border-blue-500 rounded-lg text-center">
+                  <button 
+                    onClick={() => setAppearance(prev => ({ ...prev, theme: 'light' }))}
+                    className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                      appearance.theme === 'light' 
+                        ? 'border-blue-500 bg-blue-50' 
+                        : 'border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
                     <div className="w-8 h-8 bg-white border border-slate-300 rounded mx-auto mb-2"></div>
-                    <span className="text-sm">Light</span>
+                    <span className="text-sm font-medium">Light</span>
                   </button>
-                  <button className="p-4 border border-slate-200 rounded-lg text-center hover:border-slate-300">
+                  <button 
+                    onClick={() => setAppearance(prev => ({ ...prev, theme: 'dark' }))}
+                    className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                      appearance.theme === 'dark' 
+                        ? 'border-blue-500 bg-blue-50' 
+                        : 'border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
                     <div className="w-8 h-8 bg-slate-900 rounded mx-auto mb-2"></div>
-                    <span className="text-sm">Dark</span>
+                    <span className="text-sm font-medium">Dark</span>
                   </button>
-                  <button className="p-4 border border-slate-200 rounded-lg text-center hover:border-slate-300">
+                  <button 
+                    onClick={() => setAppearance(prev => ({ ...prev, theme: 'auto' }))}
+                    className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                      appearance.theme === 'auto' 
+                        ? 'border-blue-500 bg-blue-50' 
+                        : 'border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
                     <div className="w-8 h-8 bg-gradient-to-br from-white to-slate-900 rounded mx-auto mb-2"></div>
-                    <span className="text-sm">Auto</span>
+                    <span className="text-sm font-medium">Auto</span>
                   </button>
                 </div>
               </div>
               <div className="border border-slate-200 rounded-lg p-4">
                 <h4 className="font-medium text-slate-900 mb-2">Font Size</h4>
-                <select className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
+                <select 
+                  value={appearance.fontSize}
+                  onChange={(e) => setAppearance(prev => ({ ...prev, fontSize: e.target.value }))}
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                   style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'optimizeLegibility'
-                  }}>
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                  <option>Extra Large</option>
+                  }}
+                >
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                  <option value="extra-large">Extra Large</option>
                 </select>
               </div>
+            </div>
+
+            <div className="flex justify-end">
+              <button onClick={handleSaveAppearance} className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Save Appearance
+              </button>
             </div>
           </div>
         );
