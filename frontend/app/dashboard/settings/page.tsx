@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { User, Bell, Shield, Palette, Globe, Database, HelpCircle } from 'lucide-react';
 
 export default function SettingsPage() {
@@ -31,6 +31,17 @@ export default function SettingsPage() {
     fontSize: 'medium'
   });
 
+  // Load saved appearance settings on mount
+  useEffect(() => {
+    const savedSettings = localStorage.getItem('appearance-settings');
+    if (savedSettings) {
+      const parsed = JSON.parse(savedSettings);
+      setAppearance(parsed);
+      applyTheme(parsed.theme);
+      applyFontSize(parsed.fontSize);
+    }
+  }, []);
+
   const handleSaveProfile = () => {
     console.log('Saving profile:', profileData);
   };
@@ -44,7 +55,60 @@ export default function SettingsPage() {
   };
 
   const handleSaveAppearance = () => {
-    console.log('Saving appearance settings:', appearance);
+    // Save to localStorage
+    localStorage.setItem('appearance-settings', JSON.stringify(appearance));
+    
+    // Apply theme to document
+    applyTheme(appearance.theme);
+    
+    // Apply font size to document
+    applyFontSize(appearance.fontSize);
+    
+    // Show success message
+    alert('Appearance settings saved successfully!');
+  };
+
+  const applyTheme = (theme: string) => {
+    const root = document.documentElement;
+    
+    switch (theme) {
+      case 'dark':
+        root.classList.add('dark');
+        break;
+      case 'light':
+        root.classList.remove('dark');
+        break;
+      case 'auto':
+        // Check system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+        break;
+    }
+  };
+
+  const applyFontSize = (fontSize: string) => {
+    const root = document.documentElement;
+    
+    // Remove existing font size classes
+    root.classList.remove('text-sm', 'text-base', 'text-lg', 'text-xl');
+    
+    switch (fontSize) {
+      case 'small':
+        root.classList.add('text-sm');
+        break;
+      case 'medium':
+        root.classList.add('text-base');
+        break;
+      case 'large':
+        root.classList.add('text-lg');
+        break;
+      case 'extra-large':
+        root.classList.add('text-xl');
+        break;
+    }
   };
 
   const handleSaveLanguage = () => {
