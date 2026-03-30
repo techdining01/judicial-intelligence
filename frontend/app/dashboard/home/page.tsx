@@ -89,39 +89,39 @@ export default function DashboardHomePage() {
   const getColorClasses = (color: string) => {
     const colorMap = {
       blue: {
-        bg: "",
+        bg: "bg-blue-50",
         border: "border-blue-200",
         icon: "text-blue-600",
         button: "bg-blue-600 hover:bg-blue-700",
-        badge: "bg-blue-100 text-blue-800"
+        badge: "border border-blue-200 text-blue-800"
       },
       purple: {
-        bg: "",
+        bg: "bg-purple-50",
         border: "border-purple-200",
         icon: "text-purple-600",
         button: "bg-purple-600 hover:bg-purple-700",
-        badge: "bg-purple-100 text-purple-800"
+        badge: "border border-purple-200 text-purple-800"
       },
       green: {
-        bg: "",
+        bg: "bg-green-50",
         border: "border-green-200",
         icon: "text-green-600",
         button: "bg-green-600 hover:bg-green-700",
-        badge: "bg-green-100 text-green-800"
+        badge: "border border-green-200 text-green-800"
       },
       orange: {
-        bg: "",
+        bg: "bg-orange-50",
         border: "border-orange-200",
         icon: "text-orange-600",
         button: "bg-orange-600 hover:bg-orange-700",
-        badge: "bg-orange-100 text-orange-800"
+        badge: "border border-orange-200 text-orange-800"
       },
       red: {
-        bg: "",
+        bg: "bg-red-50",
         border: "border-red-200",
         icon: "text-red-600",
         button: "bg-red-600 hover:bg-red-700",
-        badge: "bg-red-100 text-red-800"
+        badge: "border border-red-200 text-red-800"
       }
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.blue;

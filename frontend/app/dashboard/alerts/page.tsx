@@ -36,7 +36,7 @@ export default function AlertsPage() {
   useEffect(() => {
     // Call real-time Django endpoint
     const token = localStorage.getItem('access');
-    fetch('http://127.0.0.1:8001/api/courts/realtime-alerts/', {
+    fetch('http://127.0.0.1:8000/api/courts/realtime-alerts/', {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',

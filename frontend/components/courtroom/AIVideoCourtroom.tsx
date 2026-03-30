@@ -119,16 +119,17 @@ export default function AIVideoCourtroom() {
   };
 
   const handleStartSession = (session: CourtroomSession) => {
-    setSelectedSession(session);
+    const updatedSession = { ...session, status: 'in_progress' as const };
+    setSelectedSession(updatedSession);
     setIsInSession(true);
     setSessionTime(0);
     setCurrentArgument('');
     setError(null);
     setIsPaused(false);
     
-    // Update session status
+    // Update sessions list
     setSessions(prev => prev.map(s => 
-      s.id === session.id ? { ...s, status: 'in_progress' } : s
+      s.id === session.id ? updatedSession : s
     ));
   };
 

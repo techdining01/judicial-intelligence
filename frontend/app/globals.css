@@ -45,6 +45,48 @@ body {
   color: #94a3b8 !important;
 }
 
+/* Light theme card backgrounds - dark mode overrides */
+.bg-blue-50 {
+  background-color: #eff6ff;
+}
+
+.bg-purple-50 {
+  background-color: #f3e8ff;
+}
+
+.bg-green-50 {
+  background-color: #f0fdf4;
+}
+
+.bg-orange-50 {
+  background-color: #fff7ed;
+}
+
+.bg-red-50 {
+  background-color: #fef2f2;
+}
+
+/* Dark mode overrides for card backgrounds */
+.dark .bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+.dark .bg-purple-50 {
+  background-color: #1e1b4b !important;
+}
+
+.dark .bg-green-50 {
+  background-color: #052e16 !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: #431407 !important;
+}
+
+.dark .bg-red-50 {
+  background-color: #450a0a !important;
+}
+
 /* Fix white hover backgrounds in dark mode */
 .dark .hover\:bg-slate-50:hover {
   background-color: #1e293b !important;
@@ -78,12 +120,11 @@ body {
   color: #94a3b8 !important;
 }
 
-/* Comprehensive text color fixes for dark mode */
-.dark .text-slate-900 {
-  color: #f1f5f9 !important;
+/* Specific fix for Profile Settings heading */
+h1.text-slate-900 {
+  color: #0f172a !important;
 }
 
-/* Specific fix for Profile Settings heading */
 .dark h1.text-slate-900 {
   color: #f1f5f9 !important;
 }
@@ -186,6 +227,11 @@ body {
 
 .dark .bg-slate-200 {
   background-color: #475569 !important;
+}
+
+/* Any Tailwind pill/card using bg-white should not stay pure white in dark mode */
+.dark .bg-white {
+  background-color: #0b1220 !important; /* near-slate background so text is readable */
 }
 
 .dark .hover\:bg-slate-50:hover {

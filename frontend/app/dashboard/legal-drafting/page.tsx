@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FileText, Download, Send, Clock, CheckCircle } from "lucide-react";
 
 export default function LegalDraftingPage() {
   const [selectedDocument, setSelectedDocument] = useState("");
   const [documentContent, setDocumentContent] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "info">("info");
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
+  const downloadButtonRef = useRef<HTMLButtonElement>(null);
+  const saveButtonRef = useRef<HTMLButtonElement>(null);
   const [generatedDocuments, setGeneratedDocuments] = useState([
     {
       id: 1,
@@ -45,6 +50,118 @@ export default function LegalDraftingPage() {
       description: "Prepare written arguments for court submission",
       icon: "📋",
       fields: ["Case Issues", "Legal Arguments", "Prayer", "Authorities"]
+    },
+    {
+      id: "affidavit-car-ownership",
+      title: "Affidavit for Change of Car Ownership",
+      description: "Transfer vehicle ownership legally",
+      icon: "🚗",
+      fields: ["Current Owner", "New Owner", "Vehicle Details", "Witnesses"]
+    },
+    {
+      id: "affidavit-loss-documents",
+      title: "Affidavit of Loss of Important Documents",
+      description: "Declare loss of important legal documents",
+      icon: "📄",
+      fields: ["Document Type", "Circumstances of Loss", "Date of Loss", "Police Report"]
+    },
+    {
+      id: "affidavit-marriage",
+      title: "Affidavit of Marriage",
+      description: "Legal declaration of marriage for official purposes",
+      icon: "💑",
+      fields: ["Spouse Names", "Date of Marriage", "Place of Marriage", "Witnesses"]
+    },
+    {
+      id: "affidavit-name-change",
+      title: "Affidavit of Facts for Change of Name",
+      description: "Legal declaration for name change process",
+      icon: "✍️",
+      fields: ["Current Name", "New Name", "Reason for Change", "Duration of Usage"]
+    },
+    {
+      id: "affidavit-single-parenthood",
+      title: "Affidavit of Single Parenthood",
+      description: "Legal declaration of single parent status",
+      icon: "👤",
+      fields: ["Parent Name", "Child Details", "Other Parent Status", "Duration of Single Parenthood"]
+    },
+    {
+      id: "affidavit-bachelorhood",
+      title: "Affidavit of Bachelorhood",
+      description: "Legal declaration of bachelor status",
+      icon: "🧑",
+      fields: ["Full Name", "Declaration of Bachelor Status", "Reason", "Duration"]
+    },
+    {
+      id: "affidavit-spinsterhood",
+      title: "Affidavit of Facts as to Spinsterhood",
+      description: "Legal declaration of spinster status",
+      icon: "👩",
+      fields: ["Full Name", "Declaration of Spinster Status", "Reason", "Duration"]
+    },
+    {
+      id: "affidavit-passport-loss",
+      title: "Affidavit of Loss of International Passport",
+      description: "Declare loss of Nigerian international passport",
+      icon: "🛂",
+      fields: ["Passport Number", "Date of Issue", "Place of Loss", "Travel Plans"]
+    },
+    {
+      id: "affidavit-sim-loss",
+      title: "Affidavit of Loss of SIM Card",
+      description: "Declare loss of mobile SIM card for replacement",
+      icon: "📱",
+      fields: ["Phone Number", "Network Provider", "Date of Loss", "Police Report"]
+    },
+    {
+      id: "affidavit-educational-certificates",
+      title: "Affidavit of Loss of Educational Certificates",
+      description: "Declare loss of academic certificates",
+      icon: "🎓",
+      fields: ["Certificate Types", "Institution Names", "Year of Issue", "Circumstances of Loss"]
+    },
+    {
+      id: "affidavit-vehicle-particulars",
+      title: "Affidavit of Loss of Vehicle Particulars",
+      description: "Declare loss of vehicle registration documents",
+      icon: "🚙",
+      fields: ["Vehicle Registration", "License Number", "Date of Loss", "Police Report"]
+    },
+    {
+      id: "affidavit-drivers-license",
+      title: "Affidavit of Loss of Driver's License",
+      description: "Declare loss of Nigerian driver's license",
+      icon: "🪪",
+      fields: ["License Number", "Date of Issue", "Place of Loss", "Police Report"]
+    },
+    {
+      id: "statement-of-claim",
+      title: "Statement of Claim",
+      description: "Initiate civil proceedings with detailed claim",
+      icon: "📜",
+      fields: ["Plaintiff Details", "Defendant Details", "Nature of Claim", "Relief Sought"]
+    },
+    {
+      id: "statement-of-defense",
+      title: "Statement of Defense",
+      description: "Respond to civil claims with defense arguments",
+      icon: "🛡️",
+      fields: ["Defendant Details", "Plaintiff Details", "Defense Arguments", "Prayer"]
+    },
+    {
+      id: "notice-of-appeal",
+      title: "Notice of Appeal",
+      description: "Appeal lower court decisions to higher court",
+      icon: "⚡",
+      fields: ["Lower Court Details", "Judgment Date", "Grounds of Appeal", "Relief Sought"]
+    },
+    {
+      id: "writ-of-summons",
+      title: "Writ of Summons",
+      description: "Formally summon defendant to court",
+      icon: "📬",
+      fields: ["Plaintiff Details", "Defendant Details", "Court Jurisdiction", "Case Nature"]
     }
   ];
 
@@ -52,29 +169,82 @@ export default function LegalDraftingPage() {
     setSelectedDocument(type);
     setIsGenerating(true);
     
-    // Simulate AI generation
-    setTimeout(() => {
-      const mockContent = {
-        motion: `IN THE HIGH COURT OF LAGOS STATE\n\nHOLDEN AT LAGOS\n\nSUIT NO: LD/123/2024\n\nBETWEEN\n\nPLAINTIFF\n\nAND\n\nDEFENDANT\n\n\nMOTION FOR EXTENSION OF TIME\n\nDATED: ${new Date().toLocaleDateString()}\n\n\nTAKE NOTICE that the Plaintiff herein applies to this Honorable Court for an order extending the time for filing of the Statement of Claim.\n\n\nGROUNDS FOR THE APPLICATION\n\n1. The Plaintiff requires additional time to properly prepare and file the Statement of Claim.\n2. The delay will not prejudice the Defendant.\n3. It is in the interest of justice to grant this application.\n\n\nAND FOR SUCH FURTHER ORDERS as this Honorable Court may deem fit to make in the circumstances.\n\n\nDATED AT LAGOS THIS ${new Date().toLocaleDateString()}\n\n\n_________________________\nCOUNSEL TO THE PLAINTIFF`,
-        
-        affidavit: `AFFIDAVIT OF SERVICE\n\nI, ${documentContent.includes('Deponent') ? 'John Doe' : 'Jane Smith'} of Lagos, Nigeria, do hereby make oath and state as follows:\n\n1. That I am a legal practitioner in the firm of ${documentContent.includes('Firm') ? 'Legal Associates' : 'Law Partners'}.\n\n2. That I am duly authorized by the Plaintiff to make this affidavit.\n\n3. That on the ${new Date().toLocaleDateString()}, I personally served the Defendant with the court processes.\n\n4. That the Defendant acknowledged receipt of the documents.\n\n5. That I make this affidavit in good faith and in belief of the facts stated herein.\n\n\nSWORN TO AT LAGOS\nThis ${new Date().toLocaleDateString()}\n\n\n_________________________\nDEPONENT\n\n\nBEFORE ME\n\n_________________________\nCOMMISSIONER FOR OATHS`,
-        
-        "written-address": `WRITTEN ADDRESS ON THE MERITS\n\nINTRODUCTION\n\nMy Lord, the issues for determination in this appeal are:\n\n1. Whether the trial court was right in its decision.\n2. Whether the appellant is entitled to the relief sought.\n\n\nARGUMENTS\n\nIssue 1: Jurisdiction and Proper Procedure\n\nIt is trite law that jurisdiction is fundamental and must be properly established. The case of ${documentContent.includes('Case') ? 'Smith v. Jones' : 'Doe v. Roe'} establishes this principle.\n\nThe trial court properly exercised jurisdiction in this matter as:\n- The parties are within its territorial jurisdiction\n- The subject matter falls within its competence\n- All procedural requirements were complied with\n\n\nIssue 2: Merits of the Case\n\nThe evidence before the court clearly establishes that:\n1. The appellant has a valid cause of action\n2. The respondent is liable as claimed\n3. The damages awarded are appropriate\n\n\nAUTHORITIES\n\n1. ${documentContent.includes('Authority') ? 'Supreme Court case' : 'Leading precedent'}\n2. Relevant statutory provisions\n3. Established legal principles\n\n\nPRAYER\n\nIn the circumstances, we humbly pray this Honorable Court to:\n1. Allow the appeal\n2. Set aside the decision of the lower court\n3. Grant such further orders as deemed just\n\n\nCONCLUSION\n\nThe appeal has merit and ought to be allowed.\n\n\nDATED: ${new Date().toLocaleDateString()}\n\n\n_________________________\nCOUNSEL`
-      };
+    try {
+      console.log('🔍 DEBUG: Starting document generation for type:', type);
       
-      setDocumentContent(mockContent[type as keyof typeof mockContent] || "");
-      setIsGenerating(false);
+      // Get user data for personalization
+      console.log('🔍 DEBUG: Fetching user data from: http://localhost:8000/api/auth/profile/');
+      const userResponse = await fetch('http://localhost:8000/api/auth/profile/', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('🔍 DEBUG: User response status:', userResponse.status);
+      const userData = userResponse.ok ? await userResponse.json() : {};
+      console.log('🔍 DEBUG: User data:', userData);
+      
+      // Prepare case details for AI
+      const caseDetails = {
+        case_type: "General Legal Matter",
+        legal_issue: "Document generation request",
+        jurisdiction: "Lagos State, Nigeria",
+        facts: `Document generated on ${new Date().toLocaleDateString()} for ${userData.name || 'User'}`,
+        parties: userData.name || "User",
+        arguments: "Standard legal arguments",
+        deponent: userData.name || "User"
+      };
+
+      console.log('🔍 DEBUG: Case details prepared:', caseDetails);
+      console.log('🔍 DEBUG: Calling AI service at: http://localhost:8002/ai/legal-drafting');
+
+      // Call real FastAPI service
+      const response = await fetch('http://localhost:8002/ai/legal-drafting', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access')}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          document_type: type,
+          case_details: caseDetails
+        })
+      });
+
+      console.log('🔍 DEBUG: AI response status:', response.status);
+      console.log('🔍 DEBUG: AI response ok:', response.ok);
+
+      if (!response.ok) {
+        console.log('🔍 DEBUG: Response not ok, throwing error');
+        throw new Error('Failed to generate document');
+      }
+
+      const result = await response.json();
+      console.log('🔍 DEBUG: AI result:', result);
+      setDocumentContent(result.document);
       
       // Add to generated documents
       const newDoc = {
         id: generatedDocuments.length + 1,
-        type: type.charAt(0).toUpperCase() + type.slice(1),
-        title: `${type.charAt(0).toUpperCase() + type.slice(1)} - ${new Date().toLocaleDateString()}`,
+        type: type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' '),
+        title: `${type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')} - ${new Date().toLocaleDateString()}`,
         date: new Date().toISOString().split('T')[0],
         status: "completed"
       };
+      
       setGeneratedDocuments([newDoc, ...generatedDocuments]);
-    }, 2000);
+      setMessage("Document generated successfully!");
+      setMessageType("success");
+      
+    } catch (error) {
+      console.error('Error generating document:', error);
+      setMessage("Failed to generate document. Please try again.");
+      setMessageType("error");
+      setDocumentContent("Error: Unable to generate document at this time. Please check your connection and try again.");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -126,8 +296,26 @@ export default function LegalDraftingPage() {
               <h2 className="text-lg font-semibold text-slate-900">Generated Document</h2>
               {documentContent && (
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => navigator.clipboard.writeText(documentContent)}
+                  <button 
+                    ref={copyButtonRef}
+                    onClick={() => {
+                      navigator.clipboard.writeText(documentContent).then(() => {
+                        // Show success feedback
+                        if (copyButtonRef.current) {
+                          const originalText = copyButtonRef.current.textContent;
+                          copyButtonRef.current.textContent = 'Copied!';
+                          copyButtonRef.current.classList.add('bg-green-600', 'text-white');
+                          setTimeout(() => {
+                            if (copyButtonRef.current) {
+                              copyButtonRef.current.textContent = originalText;
+                              copyButtonRef.current.classList.remove('bg-green-600', 'text-white');
+                            }
+                          }, 2000);
+                        }
+                      }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                      });
+                    }}
                     className="px-3 py-1 text-sm border border-slate-300 rounded-lg transition-colors"
                     style={{
                       WebkitFontSmoothing: 'antialiased',
@@ -137,7 +325,23 @@ export default function LegalDraftingPage() {
                   >
                     Copy
                   </button>
-                  <button className="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1">
+                  <button 
+                    ref={downloadButtonRef}
+                    onClick={() => {
+                      // Create downloadable file
+                      const content = documentContent;
+                      const blob = new Blob([content], { type: 'text/plain' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `legal-document-${new Date().toISOString().split('T')[0]}.txt`;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1"
+                  >
                     <Download className="h-4 w-4" />
                     Download
                   </button>
@@ -158,7 +362,37 @@ export default function LegalDraftingPage() {
                   }}
                 />
                 <div className="flex justify-end">
-                  <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2">
+                  <button 
+                    ref={saveButtonRef}
+                    onClick={() => {
+                      // Save document to localStorage and show feedback
+                      const documentName = `document-${new Date().toISOString().split('T')[0]}`;
+                      const savedDocuments = JSON.parse(localStorage.getItem('savedDocuments') || '[]');
+                      const newDocument = {
+                        id: Date.now(),
+                        name: documentName,
+                        content: documentContent,
+                        date: new Date().toISOString(),
+                        type: selectedDocument
+                      };
+                      savedDocuments.push(newDocument);
+                      localStorage.setItem('savedDocuments', JSON.stringify(savedDocuments));
+                      
+                      // Show success feedback
+                      if (saveButtonRef.current) {
+                        const originalText = saveButtonRef.current.innerHTML;
+                        saveButtonRef.current.innerHTML = '<CheckCircle className="h-4 w-4" /> Saved!';
+                        saveButtonRef.current.classList.add('bg-green-600');
+                        setTimeout(() => {
+                          if (saveButtonRef.current) {
+                            saveButtonRef.current.innerHTML = originalText;
+                            saveButtonRef.current.classList.remove('bg-green-600');
+                          }
+                        }, 2000);
+                      }
+                    }}
+                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+                  >
                     <Send className="h-4 w-4" />
                     Save Document
                   </button>

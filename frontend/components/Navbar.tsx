@@ -41,12 +41,12 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2 rounded-md hover:bg-slate-800 transition-colors"
+            className="lg:hidden p-2 rounded-md transition-colors"
           >
             <Menu className="h-5 w-5 text-slate-600" />
           </button>
         )}
-        <h1 className="font-semibold text-slate-800 text-base sm:text-lg">
+        <h1 className="font-semibold text-slate-900 text-base sm:text-lg">
           Nigerian Judicial Intelligence
         </h1>
       </div>
@@ -54,7 +54,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20"
+          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/20"
         >
           {hydrated && user?.avatarUrl ? (
             <img
@@ -95,7 +95,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
                 setOpen(false);
                 logout();
               }}
-              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50"
+              className="w-full px-4 py-2 text-left text-sm text-red-600 transition-colors"
             >
               Sign out
             </button>

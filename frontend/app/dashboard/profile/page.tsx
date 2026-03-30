@@ -24,6 +24,7 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState("profile");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "info">("info");
 
   // Profile state
   const [avatarUrl, setAvatarUrl] = useState("");
@@ -61,10 +62,17 @@ export default function ProfilePage() {
   // Language state
   const [language, setLanguage] = useState("en");
 
+  // Privacy state (local-only for now)
+  const [privacy, setPrivacy] = useState({
+    profileVisibility: "Everyone",
+    searchEngineIndexing: false,
+  });
+
   useEffect(() => {
     const currentUser = getUserFromToken();
     setUser(currentUser);
-    setAvatarUrl(currentUser?.avatarUrl || "");
+    // backend uses avatar_url; some pages used avatarUrl previously
+    setAvatarUrl((currentUser as any)?.avatar_url || (currentUser as any)?.avatarUrl || "");
     if (currentUser) {
       setProfileData(prev => ({
         ...prev,
@@ -73,7 +81,75 @@ export default function ProfilePage() {
         lastName: (currentUser as any).name?.split(' ')[1] || ""
       }));
     }
+
+    // Load saved preferences so tabs feel “alive”
+    try {
+      const saved = localStorage.getItem("ji_profile_settings");
+      if (saved) {
+        const parsed = JSON.parse(saved) as {
+          notifications?: typeof notifications;
+          appearance?: typeof appearance;
+          language?: string;
+          privacy?: typeof privacy;
+          profileData?: typeof profileData;
+          avatarUrl?: string;
+        };
+        if (parsed.notifications) setNotifications(parsed.notifications);
+        if (parsed.appearance) setAppearance(parsed.appearance);
+        if (parsed.language) setLanguage(parsed.language);
+        if (parsed.privacy) setPrivacy(parsed.privacy);
+        if (parsed.profileData) setProfileData((p) => ({ ...p, ...parsed.profileData }));
+        if (parsed.avatarUrl) setAvatarUrl(parsed.avatarUrl);
+      }
+    } catch {
+      // ignore
+    }
   }, []);
+
+  // Apply theme and font size immediately
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+    const shouldDark = appearance.theme === "dark" || (appearance.theme === "system" && prefersDark);
+    root.classList.toggle("dark", !!shouldDark);
+    
+    // Apply font size
+    root.classList.remove('text-sm', 'text-base', 'text-lg', 'text-xl');
+    switch (appearance.fontSize) {
+      case 'small':
+        root.classList.add('text-sm');
+        break;
+      case 'medium':
+        root.classList.add('text-base');
+        break;
+      case 'large':
+        root.classList.add('text-lg');
+        break;
+    }
+  }, [appearance.theme, appearance.fontSize]);
+
+  const persistSettings = (patch: Partial<{
+    notifications: typeof notifications;
+    appearance: typeof appearance;
+    language: string;
+    privacy: typeof privacy;
+    profileData: typeof profileData;
+    avatarUrl: string;
+  }>) => {
+    try {
+      const existingRaw = localStorage.getItem("ji_profile_settings");
+      const existing = existingRaw ? JSON.parse(existingRaw) : {};
+      localStorage.setItem("ji_profile_settings", JSON.stringify({ ...existing, ...patch }));
+    } catch {
+      // ignore
+    }
+  };
+
+  const showMessage = (text: string, type: "success" | "error" | "info" = "info") => {
+    setMessageType(type);
+    setMessage(text);
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -93,33 +169,33 @@ export default function ProfilePage() {
     setMessage("");
 
     try {
-      const token = localStorage.getItem('access');
+      // If user selected a file, we keep it client-side for now (previewUrl -> avatar_url)
+      // Backend currently supports avatar_url, not file upload.
+      const nextAvatarUrl = avatarFile && previewUrl ? previewUrl : avatarUrl;
+      if (!nextAvatarUrl) throw new Error("No avatar selected");
+
+      const token = localStorage.getItem("access");
       const formData = new FormData();
-      
-      if (avatarFile) {
-        formData.append('avatar', avatarFile);
-      } else if (avatarUrl) {
-        formData.append('avatar_url', avatarUrl);
-      }
+      formData.append("avatar_url", nextAvatarUrl);
 
       const res = await fetch(`${API_BASE}/auth/profile/`, {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        method: "PATCH",
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
         body: formData,
       });
 
-      if (!res.ok) throw new Error('Failed to update profile');
+      if (!res.ok) throw new Error("Failed to update profile");
 
       const data = await res.json();
       localStorage.setItem("user", JSON.stringify(data.user));
       setUser(data.user);
-      setMessage("Profile picture updated successfully!");
+      setAvatarUrl((data.user as any)?.avatar_url || nextAvatarUrl);
+      persistSettings({ avatarUrl: nextAvatarUrl });
+      showMessage("Profile picture updated successfully!", "success");
       setAvatarFile(null);
       setPreviewUrl("");
     } catch (error) {
-      setMessage("Failed to update profile picture");
+      showMessage("Failed to update profile picture", "error");
     } finally {
       setLoading(false);
     }
@@ -146,9 +222,10 @@ export default function ProfilePage() {
       const data = await res.json();
       localStorage.setItem("user", JSON.stringify(data.user));
       setUser(data.user);
-      setMessage("Profile updated successfully!");
+      persistSettings({ profileData });
+      showMessage("Profile updated successfully!", "success");
     } catch (error) {
-      setMessage("Failed to update profile");
+      showMessage("Failed to update profile", "error");
     } finally {
       setLoading(false);
     }
@@ -233,7 +310,7 @@ export default function ProfilePage() {
                   setPreviewUrl("");
                   setAvatarFile(null);
                 }}
-                className="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                className="px-4 py-2 border border-slate-300 rounded-lg transition-colors"
                 style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
@@ -446,11 +523,6 @@ export default function ProfilePage() {
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                   notifications[key as keyof typeof notifications] ? 'bg-blue-600' : 'bg-slate-200'
                 }`}
-                style={{
-                  WebkitFontSmoothing: 'antialiased',
-                  MozOsxFontSmoothing: 'grayscale',
-                  textRendering: 'optimizeLegibility'
-                }}
               >
                 <span
                   className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -460,6 +532,18 @@ export default function ProfilePage() {
               </button>
             </div>
           ))}
+        </div>
+        <div className="mt-6 flex justify-end">
+          <button
+            type="button"
+            onClick={() => {
+              persistSettings({ notifications });
+              showMessage("Notification preferences saved.", "success");
+            }}
+            className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+          >
+            Save preferences
+          </button>
         </div>
       </div>
     </div>
@@ -478,22 +562,16 @@ export default function ProfilePage() {
                 { value: "light", label: "Light", icon: Sun },
                 { value: "dark", label: "Dark", icon: Moon },
                 { value: "system", label: "System", icon: Monitor }
-              ].map(({ value, label, icon: Icon }) => (
+              ].map(({ value, label, icon }) => (
                 <button
                   key={value}
                   onClick={() => setAppearance(prev => ({ ...prev, theme: value }))}
-                  className={`p-3 border rounded-lg flex flex-col items-center gap-2 transition-colors ${
+                  className={`p-3 border rounded-lg transition-colors ${
                     appearance.theme === value
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
+                      ? 'border-blue-500 text-blue-700'
                       : 'border-slate-200 hover:border-slate-300'
                   }`}
-                  style={{
-                    WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale',
-                    textRendering: 'optimizeLegibility'
-                  }}
                 >
-                  <Icon className="h-5 w-5" />
                   <span className="text-sm font-medium">{label}</span>
                 </button>
               ))}
@@ -514,14 +592,9 @@ export default function ProfilePage() {
                   onClick={() => setAppearance(prev => ({ ...prev, fontSize: value }))}
                   className={`p-3 border rounded-lg transition-colors ${
                     appearance.fontSize === value
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
+                      ? 'border-blue-500 text-blue-700'
                       : 'border-slate-200 hover:border-slate-300'
                   }`}
-                  style={{
-                    WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale',
-                    textRendering: 'optimizeLegibility'
-                  }}
                 >
                   <span className="text-sm font-medium">{label}</span>
                 </button>
@@ -542,11 +615,6 @@ export default function ProfilePage() {
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                     appearance[key as keyof typeof appearance] ? 'bg-blue-600' : 'bg-slate-200'
                   }`}
-                  style={{
-                    WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale',
-                    textRendering: 'optimizeLegibility'
-                  }}
                 >
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -557,6 +625,18 @@ export default function ProfilePage() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="mt-6 flex justify-end">
+          <button
+            type="button"
+            onClick={() => {
+              persistSettings({ appearance });
+              showMessage("Appearance settings saved.", "success");
+            }}
+            className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+          >
+            Save appearance
+          </button>
         </div>
       </div>
     </div>
@@ -576,11 +656,6 @@ export default function ProfilePage() {
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              style={{
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale',
-                textRendering: 'optimizeLegibility'
-              }}
             >
               <option value="en">English</option>
               <option value="es">Spanish</option>
@@ -590,10 +665,22 @@ export default function ProfilePage() {
               <option value="ja">Japanese</option>
             </select>
           </div>
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="p-4 border border-blue-200 rounded-lg">
             <p className="text-sm text-blue-800">
               <strong>Note:</strong> Language preferences will apply to the interface. Legal documents will remain in their original language.
             </p>
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={() => {
+                persistSettings({ language });
+                showMessage("Language preference saved.", "success");
+              }}
+              className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+            >
+              Save language
+            </button>
           </div>
         </div>
       </div>
@@ -609,11 +696,45 @@ export default function ProfilePage() {
           <div>
             <h4 className="font-medium text-slate-900 mb-3">Data Management</h4>
             <div className="space-y-3">
-              <button className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+              <button
+                type="button"
+                onClick={() => {
+                  const payload = {
+                    user: user,
+                    profileData,
+                    notifications,
+                    appearance,
+                    language,
+                    privacy,
+                  };
+                  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = "judicial-intel-profile-export.json";
+                  a.click();
+                  URL.revokeObjectURL(url);
+                  showMessage("Export started (downloaded JSON).", "success");
+                }}
+                className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg transition-colors"
+              >
                 <Download className="h-4 w-4" />
                 Export Your Data
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition-colors">
+              <button
+                type="button"
+                onClick={() => {
+                  const ok = window.confirm("This will sign you out and clear your local settings. Continue?");
+                  if (!ok) return;
+                  localStorage.removeItem("access");
+                  localStorage.removeItem("refresh");
+                  localStorage.removeItem("user");
+                  localStorage.removeItem("ji_profile_settings");
+                  showMessage("Account cleared locally (server deletion not yet enabled).", "info");
+                  window.location.href = "/login";
+                }}
+                className="flex items-center gap-2 px-4 py-2 border border-red-300 text-red-600 rounded-lg transition-colors"
+              >
                 <Trash2 className="h-4 w-4" />
                 Delete Account
               </button>
@@ -629,10 +750,14 @@ export default function ProfilePage() {
                   <span className="text-sm font-medium text-slate-900">Profile Visibility</span>
                   <p className="text-xs text-slate-600">Control who can see your profile</p>
                 </div>
-                <select className="px-3 py-1 border border-slate-300 rounded text-sm">
-                  <option>Everyone</option>
-                  <option>Lawyers Only</option>
-                  <option>Private</option>
+                <select
+                  value={privacy.profileVisibility}
+                  onChange={(e) => setPrivacy((p) => ({ ...p, profileVisibility: e.target.value }))}
+                  className="px-3 py-1 border border-slate-300 rounded text-sm"
+                >
+                  <option value="Everyone">Everyone</option>
+                  <option value="Lawyers Only">Lawyers Only</option>
+                  <option value="Private">Private</option>
                 </select>
               </div>
               <div className="flex items-center justify-between">
@@ -640,10 +765,32 @@ export default function ProfilePage() {
                   <span className="text-sm font-medium text-slate-900">Search Engine Indexing</span>
                   <p className="text-xs text-slate-600">Allow search engines to index your profile</p>
                 </div>
-                <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-200">
-                  <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-1" />
+                <button
+                  type="button"
+                  onClick={() => setPrivacy((p) => ({ ...p, searchEngineIndexing: !p.searchEngineIndexing }))}
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                    privacy.searchEngineIndexing ? "bg-blue-600" : "bg-slate-200"
+                  }`}
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      privacy.searchEngineIndexing ? "translate-x-6" : "translate-x-1"
+                    }`}
+                  />
                 </button>
               </div>
+            </div>
+            <div className="mt-4 flex justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  persistSettings({ privacy });
+                  showMessage("Privacy settings saved.", "success");
+                }}
+                className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+              >
+                Save privacy
+              </button>
             </div>
           </div>
 
@@ -651,11 +798,19 @@ export default function ProfilePage() {
           <div>
             <h4 className="font-medium text-slate-900 mb-3">Security</h4>
             <div className="space-y-3">
-              <button className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+              <button
+                type="button"
+                onClick={() => showMessage("Password change will be enabled soon.", "info")}
+                className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg transition-colors"
+              >
                 <Lock className="h-4 w-4" />
                 Change Password
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+              <button
+                type="button"
+                onClick={() => showMessage("Two-factor authentication will be enabled soon.", "info")}
+                className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg transition-colors"
+              >
                 <Shield className="h-4 w-4" />
                 Two-Factor Authentication
               </button>
@@ -736,16 +891,18 @@ export default function ProfilePage() {
     <RoleGuard allowed={["ADMIN", "LAWYER", "STUDENT_LAWYER", "JUDGE", "RESEARCHER"]}>
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Profile Settings</h1>
-          <p className="text-slate-600 mt-1">Manage your account information and preferences</p>
+          <h1 className="text-2xl font-bold text-black">Profile Settings</h1>
+          <p className="text-gray-700 mt-1">Manage your account information and preferences</p>
         </div>
 
         {/* Message Display */}
         {message && (
           <div className={`p-4 rounded-lg ${
-            message.includes("success") 
-              ? "bg-green-50 border border-green-200 text-green-800" 
-              : "bg-red-50 border border-red-200 text-red-800"
+            messageType === "success"
+              ? "border border-green-200 text-green-800"
+              : messageType === "error"
+                ? "border border-red-200 text-red-800"
+                : "border border-blue-200 text-blue-800"
           }`}>
             {message}
           </div>
@@ -761,7 +918,6 @@ export default function ProfilePage() {
                   <button
                     key={tab.id}
                     onClick={() => {
-                      console.log('Tab clicked:', tab.id);
                       setActiveTab(tab.id);
                     }}
                     className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
@@ -769,11 +925,6 @@ export default function ProfilePage() {
                         ? "border-blue-500 text-blue-600"
                         : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
                     }`}
-                    style={{
-                      WebkitFontSmoothing: 'antialiased',
-                      MozOsxFontSmoothing: 'grayscale',
-                      textRendering: 'optimizeLegibility'
-                    }}
                   >
                     <Icon className="h-4 w-4" />
                     {tab.label}

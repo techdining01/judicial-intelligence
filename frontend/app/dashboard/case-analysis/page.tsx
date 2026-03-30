@@ -167,10 +167,44 @@ export default function CaseAnalysisPage() {
                       textRendering: 'optimizeLegibility'
                     }}
                   >
-                    <option>Lagos State</option>
-                    <option>Federal Territory</option>
-                    <option>Rivers State</option>
-                    <option>Other</option>
+                    <option value="">Select State</option>
+                    <option value="Abia">Abia State</option>
+                    <option value="Adamawa">Adamawa State</option>
+                    <option value="Akwa Ibom">Akwa Ibom State</option>
+                    <option value="Anambra">Anambra State</option>
+                    <option value="Bauchi">Bauchi State</option>
+                    <option value="Bayelsa">Bayelsa State</option>
+                    <option value="Benue">Benue State</option>
+                    <option value="Borno">Borno State</option>
+                    <option value="Cross River">Cross River State</option>
+                    <option value="Delta">Delta State</option>
+                    <option value="Ebonyi">Ebonyi State</option>
+                    <option value="Edo">Edo State</option>
+                    <option value="Ekiti">Ekiti State</option>
+                    <option value="Enugu">Enugu State</option>
+                    <option value="FCT">Federal Capital Territory (Abuja)</option>
+                    <option value="Gombe">Gombe State</option>
+                    <option value="Imo">Imo State</option>
+                    <option value="Jigawa">Jigawa State</option>
+                    <option value="Kaduna">Kaduna State</option>
+                    <option value="Kano">Kano State</option>
+                    <option value="Katsina">Katsina State</option>
+                    <option value="Kebbi">Kebbi State</option>
+                    <option value="Kogi">Kogi State</option>
+                    <option value="Kwara">Kwara State</option>
+                    <option value="Lagos">Lagos State</option>
+                    <option value="Nasarawa">Nasarawa State</option>
+                    <option value="Niger">Niger State</option>
+                    <option value="Ogun">Ogun State</option>
+                    <option value="Ondo">Ondo State</option>
+                    <option value="Osun">Osun State</option>
+                    <option value="Oyo">Oyo State</option>
+                    <option value="Plateau">Plateau State</option>
+                    <option value="Rivers">Rivers State</option>
+                    <option value="Sokoto">Sokoto State</option>
+                    <option value="Taraba">Taraba State</option>
+                    <option value="Yobe">Yobe State</option>
+                    <option value="Zamfara">Zamfara State</option>
                   </select>
                 </div>
                 <div>
